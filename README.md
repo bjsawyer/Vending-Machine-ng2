@@ -1,5 +1,9 @@
 # Vending-Machine-ng2
 
+### Purpose
+
+This application will be used as a live demo in Excella Consulting's "Getting Started with Angular 2" workshop.
+
 ### To run this Angular 2/Angular CLI application:
 
 Clone repository, open command prompt and `cd` into the directory where the repo was cloned.
