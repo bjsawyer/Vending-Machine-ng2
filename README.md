@@ -4,11 +4,18 @@
 
 This application will be used as a live demo in Excella Consulting's "Getting Started with Angular 2" workshop.
 
-### To run this Angular 2/Angular CLI application:
+### To run this Angular 2/Angular-CLI application:
 
-Clone repository, open command prompt and `cd` into the directory where the repo was cloned.
+First, you will need Node 4 or higher, as well as NPM 3 or higher (download here https://nodejs.org/en/download/).
 
-Run the following commands to install dependencies and create server:
+Second, install Angular-CLI globally:
+```bash
+npm install -g angular-cli
+```
+
+Now, you can clone the repository. Open the command prompt and `cd` into the directory where the repository was cloned.
+
+Run the following commands to install dependencies and create a server:
 
 ```bash
 cd Vending-Machine-ng2
