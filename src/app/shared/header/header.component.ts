@@ -7,7 +7,7 @@ import { Product } from '../../models/product/product.component';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  testProduct: Product = {
+  selectedProduct: Product = {
     name: 'Test Product',
     cost: 1.25
   };

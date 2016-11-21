@@ -6,16 +6,17 @@ import { RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-
+import { ProductListingComponent } from './product-listing/product-listing.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' }
-  // { path: 'home', component: HomeComponent }
+  { path: '', redirectTo: 'productListing', pathMatch: 'full' },
+  { path: 'productListing', component: ProductListingComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductListingComponent
   ],
   imports: [
     BrowserModule,
