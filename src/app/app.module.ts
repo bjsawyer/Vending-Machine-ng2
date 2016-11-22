@@ -2,17 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { ProductListingComponent } from './product-listing/product-listing.component';
 import { ProductComponent } from './product/product.component';
-const routes: Routes = [
-  { path: '', redirectTo: 'productListing', pathMatch: 'full' },
-  { path: 'productListing', component: ProductListingComponent },
-  { path: 'selectedProduct/:id', component: ProductComponent }
-];
+import { ProductService } from './services/product.service';
+
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -25,9 +22,11 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routes)
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    ProductService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
