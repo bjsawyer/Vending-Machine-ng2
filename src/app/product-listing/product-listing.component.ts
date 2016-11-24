@@ -11,6 +11,7 @@ import { ProductService } from '../services/product.service';
 })
 export class ProductListingComponent implements OnInit {
   private products: Product[];
+  private selectedProduct: Product;
 
   constructor(private productService: ProductService, private router: Router) { }
 
@@ -18,11 +19,16 @@ export class ProductListingComponent implements OnInit {
     this.getProducts();
   }
 
-  getProducts() {
+  getProducts(): void {
     this.productService.getProductListing().then(products => this.products = products);
   }
 
-  onSelect(product: Product) {
-    this.router.navigate(['/selectedProduct', product.id]);
+  onSelect(product: Product): void {
+    this.selectedProduct = product;
+    this.goToSelectedProduct();
+  }
+
+  goToSelectedProduct(): void {
+    this.router.navigate(['/selectedProduct', this.selectedProduct.id]);
   }
 }

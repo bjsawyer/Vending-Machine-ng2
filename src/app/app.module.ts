@@ -11,6 +11,9 @@ import { ProductService } from './services/product.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
+import { InMemoryProductService } from './services/in-memory-product.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    InMemoryWebApiModule.forRoot(InMemoryProductService),
   ],
   providers: [
     ProductService
