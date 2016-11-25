@@ -4,7 +4,7 @@
 <p>Select one of the available products below <a href="javascript:void()" (click)="addProduct()">(click here to add new product)</a>:</p>
 <div class="collection">
   <a href="javascript:void(0)" class="collection-item" *ngFor="let product of products" (click)="onSelect(product)">
-    {{product?.name}} ({{product?.cost | currency:'USD':true:'1.2-2'}})
+    <b>{{product?.name}}</b> ({{product?.cost | currency:'USD':true:'1.2-2'}})
     <span class="new badge">{{product?.quantity}}</span>
   </a>
 </div>

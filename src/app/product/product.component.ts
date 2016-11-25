@@ -29,10 +29,6 @@ export class ProductComponent implements OnInit {
     this.productService.getProductById(this.id).then(product => self.selectedProduct = product);
   }
 
-  checkIfBalanceEqualsCost(): boolean {
-    return this.selectedProduct && this.currentBalance === this.selectedProduct.cost;
-  }
-
   addNickel(): void {
     this.currentBalance += 0.05;
   }
@@ -54,11 +50,18 @@ export class ProductComponent implements OnInit {
   }
 
   colorBalance(): Object {
-    this.balanceEqualsCost = this.checkIfBalanceEqualsCost();
-    let style = {
-      'color': this.balanceEqualsCost ? '#33CC33' : 'red'
+    let color: string;
+    if (this.selectedProduct) {
+      if (this.currentBalance === this.selectedProduct.cost) {
+        color = '#33CC33'; // green
+      } else if (this.currentBalance > this.selectedProduct.cost) {
+        color = 'red';
+      }
+    }
+
+    return {
+      'color': color
     };
-    return style;
   }
 
   confirmPurchase(): void {
