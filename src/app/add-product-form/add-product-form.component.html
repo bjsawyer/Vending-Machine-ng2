@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col s6">
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" name="name" type="text" class="validate" [(ngModel)]="product.name" required>
+          <label class="active" for="name">Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="cost" name="cost" type="text" class="validate" [(ngModel)]="product.cost" required>
+          <label class="active" for="cost">Cost</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="quantity" name="quantity" type="text" class="validate" [(ngModel)]="product.quantity" required>
+          <label class="active" for="quantity">Quantity</label>
+        </div>
+      </div>
+      <button type="submit" class="waves-effect waves-light btn">Submit</button>
+    </form>
+  </div>
+</div>
