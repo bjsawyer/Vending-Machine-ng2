@@ -31,4 +31,8 @@ export class ProductListingComponent implements OnInit {
   goToSelectedProduct(): void {
     this.router.navigate(['/selectedProduct', this.selectedProduct.id]);
   }
+
+  addProduct(): void {
+    this.router.navigate(['/addProduct']);
+  }
 }
