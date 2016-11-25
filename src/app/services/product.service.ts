@@ -30,11 +30,22 @@ export class ProductService {
       .catch(this.handleError);
   }
 
+  // POST new product
   addProduct(product: Product) {
     return this.http
-      .post(this.apiUrl, JSON.stringify({ id: product.id, name: product.name, cost: product.cost }), { headers: this.headers })
+      .post(this.apiUrl, JSON.stringify(product), { headers: this.headers })
       .toPromise()
       .then(response => response.json().data as Product)
+      .catch(this.handleError);
+  }
+
+  // PUT update existing product
+  updateProduct(product: Product): Promise<Product> {
+    const url = `${this.apiUrl}/${product.id}`;
+    return this.http
+      .put(url, JSON.stringify(product), {headers: this.headers})
+      .toPromise()
+      .then(() => product)
       .catch(this.handleError);
   }
 

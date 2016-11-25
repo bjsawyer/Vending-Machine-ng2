@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/switchMap';
 
 import { Product } from '../models/product/product.component';
@@ -15,16 +16,21 @@ export class ProductComponent implements OnInit {
   selectedProduct: Product;
   currentBalance: number;
   id: number;
+  balanceEqualsCost: boolean;
 
   private subscription: any;
 
-  constructor(private productService: ProductService, private route: ActivatedRoute, private location: Location) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, private location: Location, private router: Router) { }
 
   ngOnInit() {
     let self = this;
     this.currentBalance = 0.00;
     this.subscription = this.route.params.subscribe(params => this.id = +params['id']);
     this.productService.getProductById(this.id).then(product => self.selectedProduct = product);
+  }
+
+  checkIfBalanceEqualsCost(): boolean {
+    return this.selectedProduct && this.currentBalance === this.selectedProduct.cost;
   }
 
   addNickel(): void {
@@ -48,10 +54,17 @@ export class ProductComponent implements OnInit {
   }
 
   colorBalance(): Object {
-    let isExactBalance = this.selectedProduct && this.currentBalance === this.selectedProduct.cost;
+    this.balanceEqualsCost = this.checkIfBalanceEqualsCost();
     let style = {
-      'color': isExactBalance ? '#33CC33' : 'red'
+      'color': this.balanceEqualsCost ? '#33CC33' : 'red'
     };
     return style;
+  }
+
+  confirmPurchase(): void {
+      let self = this;
+      this.selectedProduct.quantity -= 1;
+      this.productService.updateProduct(this.selectedProduct)
+          .then(product => self.router.navigate(['/productListing']));
   }
 }
