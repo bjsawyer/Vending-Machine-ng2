@@ -10,7 +10,6 @@ import { ProductService } from '../services/product.service';
   styleUrls: ['./add-product-form.component.css']
 })
 export class AddProductFormComponent {
-
   // Note: The ID of the new product is hard-coded. This will only work once per project iteration.
   product = new Product(6, 'Hershey\'s', 1.25, 8);
 
