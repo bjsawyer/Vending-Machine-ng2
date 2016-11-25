@@ -1,13 +1,15 @@
 import { InMemoryDbService } from 'angular2-in-memory-web-api';
 
+import { Product } from '../models/product/product.component';
+
 export class InMemoryProductService implements InMemoryDbService {
   createDb() {
     let products = [
-      {id: 1, name: 'Snickers', cost: 1.25},
-      {id: 2, name: 'Twix', cost: 1.25},
-      {id: 3, name: 'Reese\'s', cost: 1.50},
-      {id: 4, name: 'Milky Way', cost: 1.25},
-      {id: 5, name: 'Three Musketeers', cost: 1.00}
+      new Product(1, 'Snickers', 1.25, 5),
+      new Product(2, 'Twix', 1.15, 3),
+      new Product(3, 'Reese\'s', 1.55, 12),
+      new Product(4, 'Milky Way', 1.25, 8),
+      new Product(5, 'Three Musketeers', 1.00, 4)
     ];
     return { products };
   }
