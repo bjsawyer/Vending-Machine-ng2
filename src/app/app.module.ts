@@ -13,13 +13,17 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { InMemoryWebApiModule } from 'angular2-in-memory-web-api';
 import { InMemoryProductService } from './services/in-memory-product.service';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AddProductFormComponent } from './add-product-form/add-product-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ProductListingComponent,
-    ProductComponent
+    ProductComponent,
+    AddProductComponent,
+    AddProductFormComponent
   ],
   imports: [
     BrowserModule,
