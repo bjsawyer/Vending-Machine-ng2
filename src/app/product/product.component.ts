@@ -29,36 +29,45 @@ export class ProductComponent implements OnInit {
     this.productService.getProductById(this.id).then(product => self.selectedProduct = product);
   }
 
+  checkIfBalanceEqualsCost(): void {
+    this.balanceEqualsCost = this.currentBalance === this.selectedProduct.cost;
+  }
+
+  addMoney(amount: number): void {
+    this.currentBalance += amount;
+    this.checkIfBalanceEqualsCost();
+  }
+
   addNickel(): void {
-    this.currentBalance += 0.05;
+    this.addMoney(0.05);
   }
 
   addDime(): void {
-    this.currentBalance += 0.10;
+    this.addMoney(0.10);
   }
 
   addQuarter(): void {
-    this.currentBalance += 0.25;
+    this.addMoney(0.25);
   }
 
   addDollar(): void {
-    this.currentBalance += 1.00;
+    this.addMoney(1.00);
   }
 
   resetBalance(): void {
     this.currentBalance = 0;
+    this.checkIfBalanceEqualsCost();
   }
 
   colorBalance(): Object {
     let color: string;
     if (this.selectedProduct) {
-      if (this.currentBalance === this.selectedProduct.cost) {
+      if (this.balanceEqualsCost) {
         color = '#33CC33'; // green
       } else if (this.currentBalance > this.selectedProduct.cost) {
         color = 'red';
       }
     }
-
     return {
       'color': color
     };
