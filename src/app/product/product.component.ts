@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     let self = this;
-    this.currentBalance = 0.00;
+    this.currentBalance = 0;
     this.subscription = this.route.params.subscribe(params => this.id = +params['id']);
     this.productService.getProductById(this.id).then(product => self.selectedProduct = product);
   }
@@ -35,23 +35,28 @@ export class ProductComponent implements OnInit {
 
   addMoney(amount: number): void {
     this.currentBalance += amount;
+    this.currentBalance = this.roundDecimal(this.currentBalance);
     this.checkIfBalanceEqualsCost();
   }
 
+  roundDecimal(amount: number): number {
+      return Math.round(amount * 100) / 100;
+  }
+
   addNickel(): void {
-    this.addMoney(0.05);
+    this.addMoney(.05);
   }
 
   addDime(): void {
-    this.addMoney(0.10);
+    this.addMoney(.1);
   }
 
   addQuarter(): void {
-    this.addMoney(0.25);
+    this.addMoney(.25);
   }
 
   addDollar(): void {
-    this.addMoney(1.00);
+    this.addMoney(1);
   }
 
   resetBalance(): void {
