@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
-import 'rxjs/add/operator/switchMap';
 
 import { Product } from '../models/product/product.component';
 import { ProductService } from '../services/product.service';
@@ -25,7 +24,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() {
     let self = this;
     this.currentBalance = 0;
-    this.subscription = this.route.params.subscribe(params => this.id = +params['id']);
+    this.subscription = this.route.params.subscribe(params => self.id = +params['id']);
     this.productService.getProductById(this.id).then(product => self.selectedProduct = product);
   }
 

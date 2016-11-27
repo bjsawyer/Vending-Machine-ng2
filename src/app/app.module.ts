@@ -32,6 +32,7 @@ import { AddProductFormComponent } from './add-product-form/add-product-form.com
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(InMemoryProductService),
   ],
+  exports: [],
   providers: [
     ProductService
   ],
